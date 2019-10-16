@@ -21,5 +21,5 @@ import (
 
 func TestIstioctlMain(_ *testing.T) {
 	os.Args = []string{"istioctl", "version", "--remote=false"}
-	main()
+	main() // main() 可以这样测试
 }
