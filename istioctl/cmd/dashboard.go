@@ -308,7 +308,7 @@ func controlZDashCmd() *cobra.Command {
 			podName, ns := handlers.InferPodInfo(args[0], handlers.HandleNamespace(namespace, defaultNamespace))
 			client, err := clientExecFactory(kubeconfig, configContext)
 			if err != nil {
-				return fmt.Errorf("failed to create k8s client: %v", err)
+				return fmt.Errorf("failed to create k8s client: %v", err) //<---错误处理!!!!
 			}
 
 			fw, err := client.BuildPortForwarder(podName, ns, 0, controlZport)
@@ -321,7 +321,7 @@ func controlZDashCmd() *cobra.Command {
 				openBrowser(fmt.Sprintf("http://localhost:%d", fw.LocalPort), c.OutOrStdout())
 				return nil
 			}); err != nil {
-				return fmt.Errorf("failure running port forward process: %v", err)
+				return fmt.Errorf("failure running port forward process: %v", err)  //<---错误处理!!!!
 			}
 
 			return nil
